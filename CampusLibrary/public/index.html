@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Library · GraphQL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div class="eyebrow">CS543 · WEB SERVICES</div>
+      <h1>Campus Library</h1>
+      <p>Authors and their books, powered by GraphQL + MySQL.</p>
+    </header>
+
+    <section class="toolbar">
+      <div>
+        <h2>Library collection</h2>
+        <p class="muted">Authors and their published books</p>
+      </div>
+      <button id="refreshBtn" class="secondary" type="button">Refresh list</button>
+    </section>
+
+    <div id="status" class="status" role="status">Connecting to GraphQL API…</div>
+    <section id="list" class="author-grid" aria-live="polite"></section>
+
+    <section class="form-card">
+      <div class="form-heading">
+        <div class="eyebrow">LIBRARY MANAGEMENT</div>
+        <h2>Add a new book</h2>
+        <p class="muted">The book will be saved to MySQL through a GraphQL mutation.</p>
+      </div>
+      <form id="addForm">
+        <label for="title">Book title</label>
+        <input id="title" name="title" maxlength="200" placeholder="e.g. GraphQL for Beginners" required>
+        <div class="form-row">
+          <div>
+            <label for="year">Publication year</label>
+            <input id="year" name="year" type="number" min="0" max="9999" placeholder="2025">
+          </div>
+          <div>
+            <label for="authorId">Author</label>
+            <select id="authorId" name="authorId" required>
+              <option value="">Loading authors…</option>
+            </select>
+          </div>
+        </div>
+        <button id="submitBtn" type="submit">Add book</button>
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+    </section>
+    <footer>Built for CS543 Web Services · GraphQL hands-on tutorial</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
